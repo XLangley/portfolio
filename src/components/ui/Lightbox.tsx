@@ -74,7 +74,7 @@ export default function Lightbox({ media, index, onClose, onPrev, onNext }: Ligh
         )}
 
         <div className="mt-4 flex justify-center gap-2">
-          {media.map((m, i) => (
+          {media.map((_m, i) => (
             <span key={i} className={`h-2 w-2 rounded-full ${i === index ? "bg-white" : "bg-white/40"}`} />
           ))}
         </div>
