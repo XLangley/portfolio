@@ -62,6 +62,36 @@ html {
   }
 }
 
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-papel);
+  border-left: 1px solid var(--color-linea);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-acento);
+  border: 2px solid var(--color-papel);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-verde);
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--color-papel);
+}
+
+@supports (-moz-appearance: none) {
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-acento) var(--color-papel);
+  }
+}
+
 .scanlines {
   background-image: repeating-linear-gradient(
     to bottom,
