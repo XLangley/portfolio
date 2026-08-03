@@ -1,6 +1,126 @@
-﻿@import "tailwindcss";
+@layer vendor;
+@import "tailwindcss";
+@import "augmented-ui/augmented-ui.min.css" layer(vendor);
+
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: url("/fonts/CabinetGrotesk-Variable.woff2") format("woff2-variations");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-papel: #f4f2f7;
+  --color-tinta: #16121c;
+  --color-humo: #5c566b;
+  --color-acento: #6d28d9;
+  --color-verde: #4d7c0f;
+  --color-linea: #dfdae6;
+
+  --font-display: "Cabinet Grotesk", "Inter Tight", system-ui, sans-serif;
+  --font-sans: "Inter Tight", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "Courier New", monospace;
+
+  --animate-marquee: marquee 40s linear infinite;
+
+  @keyframes marquee {
+    to {
+      transform: translateX(-100%);
+    }
+  }
+}
+
+.dark {
+  --color-papel: #0e0a14;
+  --color-tinta: #e9e6f2;
+  --color-humo: #9a93ac;
+  --color-acento: #a78bfa;
+  --color-verde: #a3e635;
+  --color-linea: #2a2336;
+}
 
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-verde);
+  outline-offset: 3px;
+}
+
+::selection {
+  background: var(--color-verde);
+  color: var(--color-papel);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
-  
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-papel);
+  border-left: 1px solid var(--color-linea);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-acento);
+  border: 2px solid var(--color-papel);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-verde);
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--color-papel);
+}
+
+@supports (-moz-appearance: none) {
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-acento) var(--color-papel);
+  }
+}
+
+.scanlines {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 2px,
+    rgb(0 0 0 / 0.12) 2px,
+    rgb(0 0 0 / 0.12) 4px
+  );
+}
+
+.brillo {
+  background-image: linear-gradient(
+    105deg,
+    transparent 40%,
+    color-mix(in oklab, var(--color-tinta) 18%, transparent) 50%,
+    transparent 60%
+  );
+  background-repeat: no-repeat;
+  background-size: 250% 100%;
+  background-position: 100% 0;
+  transition: background-position 0.5s ease;
+}
+
+.brillo:hover {
+  background-position: 0% 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brillo {
+    transition: none;
+  }
+}

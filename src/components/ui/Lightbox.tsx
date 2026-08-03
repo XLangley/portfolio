@@ -20,38 +20,55 @@ export default function Lightbox({ media, index, onClose, onPrev, onNext }: Ligh
     return () => window.removeEventListener("keydown", handler)
   }, [onClose, onPrev, onNext])
 
+  useEffect(() => {
+    document.body.style.overflow = "hidden"
+    return () => {
+      document.body.style.overflow = ""
+    }
+  }, [])
+
   if (!media?.length) return null
   const item = media[index]
 
   return (
     <div
-      className="fixed inset-0 z-[100] bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/85 p-4 backdrop-blur-sm"
       onClick={onClose}
       role="dialog"
       aria-modal="true"
     >
       <button
-        onClick={(e) => { e.stopPropagation(); onClose() }}
-        className="absolute top-4 right-4 rounded-lg border border-white/15 bg-white/10 px-3 py-1.5 text-white hover:bg-white/20"
+        onClick={(e) => {
+          e.stopPropagation()
+          onClose()
+        }}
+        data-augmented-ui="tl-clip br-clip"
+        className="absolute right-4 top-4 border border-white/20 bg-white/10 px-4 py-1.5 text-sm text-white transition hover:bg-white/20 active:scale-[0.98] [--aug-br:6px] [--aug-tl:6px]"
       >
         Cerrar
       </button>
 
-      <div className="relative max-w-5xl w-full" onClick={(e) => e.stopPropagation()}>
-        <button
-          onClick={onPrev}
-          className="absolute left-0 top-1/2 -translate-y-1/2 rounded-full bg-white/10 hover:bg-white/20 p-3 text-white"
-          aria-label="Anterior"
-        >
-          ‹
-        </button>
-        <button
-          onClick={onNext}
-          className="absolute right-0 top-1/2 -translate-y-1/2 rounded-full bg-white/10 hover:bg-white/20 p-3 text-white"
-          aria-label="Siguiente"
-        >
-          ›
-        </button>
+      <div className="relative w-full max-w-5xl" onClick={(e) => e.stopPropagation()}>
+        {media.length > 1 && (
+          <>
+            <button
+              onClick={onPrev}
+              data-augmented-ui="tl-clip br-clip"
+              className="absolute left-2 top-1/2 z-10 -translate-y-1/2 bg-white/10 p-3 text-white transition hover:bg-white/20 active:scale-[0.98] [--aug-br:6px] [--aug-tl:6px]"
+              aria-label="Anterior"
+            >
+              ‹
+            </button>
+            <button
+              onClick={onNext}
+              data-augmented-ui="tl-clip br-clip"
+              className="absolute right-2 top-1/2 z-10 -translate-y-1/2 bg-white/10 p-3 text-white transition hover:bg-white/20 active:scale-[0.98] [--aug-br:6px] [--aug-tl:6px]"
+              aria-label="Siguiente"
+            >
+              ›
+            </button>
+          </>
+        )}
 
         {item.kind === "image" ? (
           <img
@@ -73,11 +90,16 @@ export default function Lightbox({ media, index, onClose, onPrev, onNext }: Ligh
           </div>
         )}
 
-        <div className="mt-4 flex justify-center gap-2">
-          {media.map((_m, i) => (
-            <span key={i} className={`h-2 w-2 rounded-full ${i === index ? "bg-white" : "bg-white/40"}`} />
-          ))}
-        </div>
+        {media.length > 1 && (
+          <div className="mt-4 flex justify-center gap-2">
+            {media.map((_m, i) => (
+              <span
+                key={i}
+                className={`h-2 w-2 rounded-full ${i === index ? "bg-white" : "bg-white/40"}`}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </div>
   )

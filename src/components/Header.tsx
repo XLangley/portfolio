@@ -1,42 +1,108 @@
-import { X } from "lucide-react"
-import { useTypewriter } from "../hooks/useTypeWriter"
+import { motion, useReducedMotion, type Variants } from "motion/react"
+import { useTypewriter } from "../hooks/useTypewriter"
+
+const roles = ["full-stack.", "backend.", "frontend."]
+
+const contenedor: Variants = {
+  oculto: {},
+  visible: { transition: { staggerChildren: 0.09 } },
+}
+
+const item: Variants = {
+  oculto: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] },
+  },
+}
 
 export default function Hero() {
-  const typed = useTypewriter(["Backend","Frontend","Full-Stack ✨"], 65, 35, 1000)
+  const reduce = useReducedMotion()
+  const rol = useTypewriter(roles, !reduce)
 
   return (
-    <section id="inicio" className="flex flex-col gap-8 md:flex-row md:items-center scroll-mt-24">
-      <div className="shrink-0">
-        <div className="relative">
-          <img
-            src="/yo.jpeg"
-            alt="Foto de perfil"
-            className="h-36 w-36 md:h-48 md:w-48 rounded-full object-cover ring-2 ring-white/20 shadow-lg"
-          />
-          <span className="absolute -bottom-1 -right-1 rounded-full bg-pink-100 px-2 py-0.5 text-xs text-pink-500 border border-pink-500/30">
-            <span className="flex items-center whitespace-nowrap font-bold">
-              No Disponible <X className="h-4 w-4 ml-1 rounded-full" />
+    <section id="inicio" className="scroll-mt-24">
+      <motion.div
+        className="grid gap-10 md:grid-cols-12"
+        variants={contenedor}
+        initial={reduce ? false : "oculto"}
+        animate="visible"
+      >
+        <div className="md:col-span-8">
+          <motion.div variants={item}>
+            <span
+              data-augmented-ui="tl-clip br-clip"
+              className="inline-flex items-center gap-2 bg-verde px-3.5 py-1.5 font-mono text-[11px] font-medium uppercase tracking-widest text-papel [--aug-br:6px] [--aug-tl:6px]"
+            >
+              <span className="relative flex h-2 w-2" aria-hidden="true">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-papel opacity-70 motion-reduce:hidden" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-papel" />
+              </span>
+              Trabajando
             </span>
-          </span>
-        </div>
-      </div>
+          </motion.div>
 
-      <div className="flex-1">
-        <h1 className="text-3xl md:text-5xl font-bold leading-tight">
-          Alfredo Galdames
-        </h1>
-        <p className="mt-3 text-slate-300 max-w-prose">
-           Ingeniero Informático con foco en calidad, rendimiento y experiencia de usuario. Desarrollo aplicaciones modernas, escalables y con un diseño cuidado, priorizando la optimización y la usabilidad.
-        </p>
+          <motion.h1
+            variants={item}
+            className="mt-6 font-display text-4xl font-extrabold leading-[1.02] tracking-tight sm:text-5xl md:text-6xl lg:text-7xl"
+          >
+            Alfredo Galdames
+          </motion.h1>
 
-        <div className="mt-5 font-mono text-lg md:text-xl text-slate-200">
-          <span className="opacity-70">Soy Desarollador</span>
-          <span className="relative p-2 text-pink-400">
-            {typed}
-            <span className="ml-1 inline-block h-[1.15em] w-px align-[-2px] bg-slate-200 animate-pulse"></span>
-          </span>
+          <motion.p
+            variants={item}
+            className="mt-3 font-display text-xl font-bold tracking-tight md:text-2xl"
+          >
+            Ingeniero informático{" "}
+            <span className="text-verde">
+              <span className="sr-only">full-stack</span>
+              <span aria-hidden="true">
+                {rol}
+                <span className="ml-1 inline-block h-[0.8em] w-[3px] translate-y-[0.08em] animate-pulse bg-verde motion-reduce:hidden" />
+              </span>
+            </span>
+          </motion.p>
+
+          <motion.p variants={item} className="mt-5 max-w-[58ch] text-lg leading-relaxed text-humo">
+            Desde Santiago de Chile construyo aplicaciones web escalables con{" "}
+            <span className="font-medium text-acento">TypeScript</span> (React, NestJS, PostgreSQL/Oracle)
+            y soluciones de IA con <span className="font-medium text-acento">Python</span> y{" "}
+            <span className="font-medium text-acento">LangGraph</span>: agentes sobre LLMs y
+            automatización inteligente.
+          </motion.p>
+
+          <motion.div variants={item} className="mt-8 flex flex-wrap items-center gap-3">
+            <a
+              href="#proyectos"
+              data-augmented-ui="tl-clip br-clip"
+              className="brillo bg-tinta px-6 py-3 text-sm font-medium text-papel transition hover:bg-tinta/85 active:scale-[0.98] [--aug-br:10px] [--aug-tl:10px]"
+            >
+              Ver proyectos
+            </a>
+            <a
+              href="mailto:agaldames.dev@gmail.com"
+              data-augmented-ui="tl-clip br-clip border"
+              className="brillo px-6 py-3 text-sm font-medium transition active:scale-[0.98] [--aug-border-all:1px] [--aug-border-bg:var(--color-linea)] [--aug-br:10px] [--aug-tl:10px] hover:[--aug-border-bg:var(--color-verde)]"
+            >
+              Escríbeme
+            </a>
+          </motion.div>
         </div>
-      </div>
+
+        <motion.div variants={item} className="md:col-span-4">
+          <div
+            data-augmented-ui="tr-clip bl-clip border"
+            className="w-40 md:w-full [--aug-bl:12px] [--aug-border-all:1px] [--aug-border-bg:var(--color-verde)] [--aug-tr:20px]"
+          >
+            <img
+              src="/yo.jpeg"
+              alt="Foto de perfil de Alfredo Galdames"
+              className="aspect-square w-full object-cover"
+            />
+          </div>
+        </motion.div>
+      </motion.div>
     </section>
   )
 }

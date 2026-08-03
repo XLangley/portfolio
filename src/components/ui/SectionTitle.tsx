@@ -1,9 +1,11 @@
-export default function SectionTitle({ title, subtitle }: { title: string; subtitle?: string }) {
-    return (
-      <div className="mb-8">
-        <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-white">{title}</h2>
-        {subtitle && <p className="mt-1 text-sm text-slate-400">{subtitle}</p>}
-      </div>
-    )
-  }
-  
+export default function SectionTitle({ title, meta }: { title: string; meta?: string }) {
+  return (
+    <div className="mb-10 flex items-baseline justify-between gap-4 border-t border-linea pt-6">
+      <h2 className="flex items-center gap-3 font-display text-2xl font-bold tracking-tight md:text-3xl">
+        <span aria-hidden="true" className="inline-block h-5 w-1 bg-verde" />
+        {title}
+      </h2>
+      {meta && <span className="font-mono text-xs text-humo">{meta}</span>}
+    </div>
+  )
+}

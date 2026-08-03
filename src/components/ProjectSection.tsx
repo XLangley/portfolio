@@ -1,63 +1,67 @@
 import { useState } from "react"
-import Card from "./ui/Card"
 import SectionTitle from "./ui/SectionTitle"
-import { projects } from "../data/projects"
+import Reveal from "./ui/Reveal"
+import { projects, type MediaItem } from "../data/projects"
 import ImageCarousel from "./ui/ImageCarousel"
 import Lightbox from "./ui/Lightbox"
 
 export default function ProjectsSection() {
   const [open, setOpen] = useState(false)
-  const [activeMedia, setActiveMedia] = useState<any[]>([])
+  const [activeMedia, setActiveMedia] = useState<MediaItem[]>([])
   const [activeIndex, setActiveIndex] = useState(0)
 
-  const openLightbox = (media: any[], index: number) => {
+  const openLightbox = (media: MediaItem[], index: number) => {
     setActiveMedia(media)
     setActiveIndex(index)
     setOpen(true)
   }
 
   return (
-    <section id="proyectos" className="mt-16 md:mt-24 scroll-mt-24">
-      <SectionTitle title="Proyectos" subtitle="Selección de trabajo reciente" />
-      <div className="grid gap-5 md:grid-cols-2">
-        {projects.map((p, idx) => (
-          <Card key={idx} className="group">
-            <div className="flex items-center justify-between">
-              <h3 className="text-lg font-semibold">{p.nombre}</h3>
-              <span className="text-xs text-slate-400">{p.anio}</span>
-            </div>
+    <section id="proyectos" className="mt-20 scroll-mt-24 md:mt-28">
+      <SectionTitle title="Proyectos" />
+      <div className="grid gap-10 md:grid-cols-2 md:gap-x-8 md:gap-y-14">
+        {projects.map((p) => (
+          <Reveal key={p.nombre}>
+            <article>
+              {p.media && p.media.length > 0 && (
+                <ImageCarousel media={p.media} onItemClick={(i) => openLightbox(p.media!, i)} />
+              )}
 
-            <p className="mt-2 text-sm text-slate-300">{p.descripcion}</p>
+              <div className="mt-5 flex flex-wrap items-baseline justify-between gap-2">
+                <h3 className="font-display text-xl font-bold tracking-tight md:text-2xl">
+                  {p.nombre}
+                </h3>
+                <span className="font-mono text-xs text-humo">{p.anio}</span>
+              </div>
 
-            {p.media && p.media.length > 0 && (
-              <ImageCarousel
-                media={p.media}
-                className="mt-3"
-                onItemClick={(i) => openLightbox(p.media!, i)}
-              />
-            )}
+              <p className="mt-2 max-w-[65ch] text-[15px] leading-relaxed text-humo">
+                {p.descripcion}
+              </p>
 
-            <div className="mt-4 flex gap-2 flex-wrap">
-              {p.tecnologias.map((tec, i) => (
-                <span
-                  key={i}
-                  className={`rounded-md bg-white/10 px-2 py-0.5 text-xs ${tec.color ?? "text-slate-200"}`}
+              <ul className="mt-4 flex flex-wrap gap-2">
+                {p.tecnologias.map((tec) => (
+                  <li
+                    key={tec.nombre}
+                    data-augmented-ui="tl-clip br-clip border"
+                    className="brillo px-2.5 py-0.5 font-mono text-[11px] text-humo transition-colors hover:text-verde [--aug-border-all:1px] [--aug-border-bg:var(--color-linea)] [--aug-br:5px] [--aug-tl:5px] hover:[--aug-border-bg:var(--color-verde)]"
+                  >
+                    {tec.nombre}
+                  </li>
+                ))}
+              </ul>
+
+              {p.link && p.link !== "#" && (
+                <a
+                  href={p.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-5 inline-block text-sm font-medium text-acento underline underline-offset-4 transition-opacity hover:opacity-75"
                 >
-                  {tec.icon ? <img src={tec.icon} alt={tec.nombre} className="inline h-4 w-4 mr-1" /> : null}
-                  {tec.nombre}
-                </span>
-              ))}
-            </div>
-
-            {p.link && (
-              <a
-                href={p.link}
-                className="mt-4 inline-block text-sm text-pink-300 hover:text-pink-200 underline underline-offset-4"
-              >
-                Ver más
-              </a>
-            )}
-          </Card>
+                  Ver proyecto ↗
+                </a>
+              )}
+            </article>
+          </Reveal>
         ))}
       </div>
 

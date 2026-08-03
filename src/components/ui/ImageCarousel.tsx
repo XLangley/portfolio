@@ -4,7 +4,7 @@ import type { MediaItem } from "../../data/projects"
 interface ImageCarouselProps {
   media: MediaItem[]
   className?: string
-  onItemClick?: (index: number) => void // abrir lightbox
+  onItemClick?: (index: number) => void
 }
 
 export default function ImageCarousel({ media, className = "", onItemClick }: ImageCarouselProps) {
@@ -19,16 +19,22 @@ export default function ImageCarousel({ media, className = "", onItemClick }: Im
 
   return (
     <div className={`relative ${className}`}>
-      <div className="relative">
+      <div
+        data-augmented-ui="tr-clip bl-clip border"
+        className="group relative [--aug-bl:14px] [--aug-border-all:1px] [--aug-border-bg:var(--color-verde)] [--aug-tr:24px]"
+      >
         {current.kind === "image" ? (
           <img
             src={current.src}
             alt={current.alt ?? `Imagen ${idx + 1}`}
-            className="h-48 w-full md:h-56 lg:h-64 object-cover rounded-xl border border-white/10 cursor-zoom-in"
+            className="aspect-video w-full cursor-zoom-in object-cover"
             onClick={() => onItemClick?.(idx)}
           />
         ) : (
-          <div className="relative w-full rounded-xl border border-white/10 overflow-hidden" onClick={() => onItemClick?.(idx)}>
+          <div
+            className="relative w-full overflow-hidden"
+            onClick={() => onItemClick?.(idx)}
+          >
             <div className="pt-[56.25%]" />
             <iframe
               className="absolute inset-0 h-full w-full"
@@ -41,18 +47,23 @@ export default function ImageCarousel({ media, className = "", onItemClick }: Im
           </div>
         )}
 
+        <div
+          aria-hidden="true"
+          className="scanlines pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+        />
+
         {total > 1 && (
           <>
             <button
               onClick={prev}
-              className="absolute left-2 top-1/2 -translate-y-1/2 rounded-full bg-black/30 hover:bg-black/50 p-2 text-white"
+              className="absolute left-3 top-1/2 -translate-y-1/2 rounded-sm bg-tinta/60 p-2 text-papel transition hover:bg-tinta/80 active:scale-[0.98]"
               aria-label="Anterior"
             >
               ‹
             </button>
             <button
               onClick={next}
-              className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full bg-black/30 hover:bg-black/50 p-2 text-white"
+              className="absolute right-3 top-1/2 -translate-y-1/2 rounded-sm bg-tinta/60 p-2 text-papel transition hover:bg-tinta/80 active:scale-[0.98]"
               aria-label="Siguiente"
             >
               ›
@@ -62,16 +73,16 @@ export default function ImageCarousel({ media, className = "", onItemClick }: Im
       </div>
 
       {total > 1 && (
-        <div className="mt-2 flex justify-center gap-2">
+        <div className="mt-3 flex justify-center gap-2">
           {media.map((m, i) => (
             <button
               key={i}
               onClick={() => setIdx(i)}
               aria-label={`Ir al item ${i + 1}`}
               className={`h-1.5 w-4 rounded-full transition ${
-                i === idx ? "bg-white" : "bg-white/40 hover:bg-white/60"
+                i === idx ? "bg-tinta" : "bg-tinta/25 hover:bg-tinta/50"
               }`}
-              title={m.kind === "youtube" ? (m as any).title ?? "Video" : (m as any).alt ?? "Imagen"}
+              title={m.kind === "youtube" ? m.title ?? "Video" : m.alt ?? "Imagen"}
             />
           ))}
         </div>
