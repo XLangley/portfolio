@@ -5,7 +5,7 @@ import { experiences } from "../data/experiences"
 export default function ExperienceSection() {
   return (
     <section id="experiencia" className="mt-20 scroll-mt-24 md:mt-28">
-      <SectionTitle title="Experiencia" meta="2024 — presente" />
+      <SectionTitle title="Experiencia" />
       <div>
         {experiences.map((exp) => (
           <Reveal
