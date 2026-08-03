@@ -1,6 +1,61 @@
-﻿@import "tailwindcss";
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: url("/fonts/CabinetGrotesk-Variable.woff2") format("woff2-variations");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-papel: #f7f5f6;
+  --color-tinta: #16131a;
+  --color-humo: #5f5a6b;
+  --color-acento: #7c3aed;
+  --color-rosa: #ec4899;
+  --color-linea: #e0dade;
+
+  --font-display: "Cabinet Grotesk", "Inter Tight", system-ui, sans-serif;
+  --font-sans: "Inter Tight", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "Courier New", monospace;
+
+  --animate-marquee: marquee 40s linear infinite;
+
+  @keyframes marquee {
+    to {
+      transform: translateX(-100%);
+    }
+  }
+}
+
+.dark {
+  --color-papel: #121016;
+  --color-tinta: #edeaf0;
+  --color-humo: #a29cad;
+  --color-acento: #a78bfa;
+  --color-rosa: #f472b6;
+  --color-linea: #2b2530;
+}
 
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-acento);
+  outline-offset: 3px;
+}
+
+::selection {
+  background: var(--color-acento);
+  color: var(--color-papel);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
-  
+}

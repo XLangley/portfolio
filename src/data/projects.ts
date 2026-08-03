@@ -1,6 +1,6 @@
 export type MediaItem =
   | { kind: "image"; src: string; alt?: string }
-  | { kind: "youtube"; id: string; title?: string; thumbnail?: string } // thumbnail opcional
+  | { kind: "youtube"; id: string; title?: string; thumbnail?: string }
 
 export interface Project {
   nombre: string
@@ -8,7 +8,7 @@ export interface Project {
   anio: string
   link?: string
   tecnologias: { nombre: string; icon?: string; color?: string }[]
-  media?: MediaItem[] // <— antes era images: string[]
+  media?: MediaItem[]
 }
   
   export const projects: Project[] = [
@@ -33,7 +33,7 @@ export interface Project {
     {
       nombre: "Capacitaciones APH-KD",
       descripcion: "Landing page para empresa de capacitaciones medicas.",
-      anio: "En contrucción",
+      anio: "En construcción",
       link: "#",
       tecnologias: [
         { nombre: "Vite", color: "text-sky-400" },

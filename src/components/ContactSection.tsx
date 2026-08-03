@@ -1,31 +1,45 @@
+import { Github, Linkedin, Mail, type LucideIcon } from "lucide-react"
+import SectionTitle from "./ui/SectionTitle"
+import Reveal from "./ui/Reveal"
 import { contacts } from "../data/contacts"
-import * as Icons from "lucide-react"
+
+const iconos: Record<string, LucideIcon> = { Github, Linkedin, Mail }
 
 export default function ContactSection() {
-  return (
-    <section id="contacto" className="mt-16 md:mt-24 mb-16 scroll-mt-24">
-      <div className="mb-8 flex flex-col md:flex-row md:items-center gap-10">
-        <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-white">
-          Contáctame:
-        </h2>
+  const redes = contacts.filter((c) => c.nombre !== "Email")
 
-        <div className="flex gap-5">
-          {contacts.map((c, idx) => {
-            const LucideIcon = (Icons as any)[c.icon]
+  return (
+    <section id="contacto" className="mt-20 scroll-mt-24 md:mt-28">
+      <SectionTitle title="Contacto" />
+      <Reveal>
+        <p className="font-display text-4xl font-extrabold tracking-tight md:text-6xl">
+          ¿Trabajamos juntos?
+        </p>
+        <a
+          href="mailto:agaldames.dev@gmail.com"
+          className="mt-6 inline-block text-lg text-acento underline underline-offset-8 transition-opacity hover:opacity-75 md:text-2xl"
+        >
+          agaldames.dev@gmail.com
+        </a>
+        <ul className="mt-10 flex flex-wrap gap-6">
+          {redes.map((c) => {
+            const Icono = iconos[c.icon]
             return (
-              <a
-                key={idx}
-                href={c.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`transition-colors ${c.color ?? "text-slate-300 hover:text-pink-400"}`}
-              >
-                {LucideIcon ? <LucideIcon className="h-6 w-6" /> : null}
-              </a>
+              <li key={c.nombre}>
+                <a
+                  href={c.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-humo transition-colors hover:text-acento"
+                >
+                  {Icono ? <Icono className="h-4 w-4" aria-hidden="true" /> : null}
+                  {c.nombre}
+                </a>
+              </li>
             )
           })}
-        </div>
-      </div>
+        </ul>
+      </Reveal>
     </section>
   )
 }
