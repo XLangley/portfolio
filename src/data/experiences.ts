@@ -16,6 +16,8 @@ export interface Experience {
         tecnologias: ["React", "Vite", "Node.js (Express, NestJS)", "Python (FastAPI, LangGraph)", "OpenAI", "PostgreSQL", "Oracle", "Docker"],
         descripcion: [
           "Migración de Salesforce a un CRM propio multi-tenant (SalesCramer) con NestJS + Oracle PL/SQL y React, integrado con un agente de IA conversacional (Python, FastAPI, LangGraph + OpenAI) que navega el sistema y autocompleta formularios desde lenguaje natural.",
+          "Implementación de observabilidad con Grafana, Loki y Prometheus para el monitoreo centralizado de servicios, métricas y logs.",
+          "Migración del control de versiones de Gogs a GitLab CE, integrando pipelines de CI/CD para builds y despliegues automatizados.",
           "Diseño e implementación de APIs escalables con Node.js (Express, NestJS).",
           "Desarrollo de interfaces con React + Vite, aplicando buenas prácticas de rendimiento, accesibilidad y diseño responsivo.",
           "Contenerización y despliegue de servicios mediante Docker."
