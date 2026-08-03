@@ -31,7 +31,10 @@ export default function Hero() {
       >
         <div className="md:col-span-8">
           <motion.div variants={item}>
-            <span className="inline-flex items-center gap-2 rounded-full bg-acento px-3.5 py-1.5 font-mono text-[11px] font-medium uppercase tracking-widest text-papel">
+            <span
+              data-augmented-ui="tl-clip br-clip"
+              className="inline-flex items-center gap-2 bg-verde px-3.5 py-1.5 font-mono text-[11px] font-medium uppercase tracking-widest text-papel [--aug-br:6px] [--aug-tl:6px]"
+            >
               <span className="relative flex h-2 w-2" aria-hidden="true">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-papel opacity-70 motion-reduce:hidden" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-papel" />
@@ -44,36 +47,43 @@ export default function Hero() {
             variants={item}
             className="mt-6 font-display text-4xl font-extrabold leading-[1.02] tracking-tight sm:text-5xl md:text-6xl lg:text-7xl"
           >
-            Ingeniero informático
-            <span className="block text-acento">
+            Alfredo Galdames
+          </motion.h1>
+
+          <motion.p
+            variants={item}
+            className="mt-3 font-display text-xl font-bold tracking-tight md:text-2xl"
+          >
+            Ingeniero informático{" "}
+            <span className="text-verde">
               <span className="sr-only">full-stack</span>
               <span aria-hidden="true">
                 {rol}
-                <span className="ml-1 inline-block h-[0.8em] w-[3px] translate-y-[0.06em] animate-pulse bg-acento motion-reduce:hidden md:w-1" />
+                <span className="ml-1 inline-block h-[0.8em] w-[3px] translate-y-[0.08em] animate-pulse bg-verde motion-reduce:hidden" />
               </span>
             </span>
-          </motion.h1>
+          </motion.p>
 
-          <motion.p variants={item} className="mt-6 max-w-[58ch] text-lg leading-relaxed text-humo">
-            Con base en Santiago de Chile, desarrollo software con foco en calidad, rendimiento y
-            experiencia de usuario: APIs escalables con{" "}
-            <span className="font-medium text-acento">NestJS</span>, interfaces rápidas con{" "}
-            <span className="font-medium text-acento">React</span> y{" "}
-            <span className="font-medium text-acento">agentes de IA</span> con LangGraph, con la
-            misma soltura en sistemas legados sobre{" "}
-            <span className="font-medium text-acento">Oracle</span> que en productos modernos.
+          <motion.p variants={item} className="mt-5 max-w-[58ch] text-lg leading-relaxed text-humo">
+            Desde Santiago de Chile construyo aplicaciones web escalables con{" "}
+            <span className="font-medium text-acento">TypeScript</span> (React, NestJS, PostgreSQL/Oracle)
+            y soluciones de IA con <span className="font-medium text-acento">Python</span> y{" "}
+            <span className="font-medium text-acento">LangGraph</span>: agentes sobre LLMs y
+            automatización inteligente.
           </motion.p>
 
           <motion.div variants={item} className="mt-8 flex flex-wrap items-center gap-3">
             <a
               href="#proyectos"
-              className="rounded-full bg-tinta px-6 py-3 text-sm font-medium text-papel transition hover:bg-tinta/85 active:scale-[0.98]"
+              data-augmented-ui="tl-clip br-clip"
+              className="brillo bg-tinta px-6 py-3 text-sm font-medium text-papel transition hover:bg-tinta/85 active:scale-[0.98] [--aug-br:10px] [--aug-tl:10px]"
             >
               Ver proyectos
             </a>
             <a
               href="mailto:agaldames.dev@gmail.com"
-              className="rounded-full border border-linea px-6 py-3 text-sm font-medium transition hover:border-tinta active:scale-[0.98]"
+              data-augmented-ui="tl-clip br-clip border"
+              className="brillo px-6 py-3 text-sm font-medium transition active:scale-[0.98] [--aug-border-all:1px] [--aug-border-bg:var(--color-linea)] [--aug-br:10px] [--aug-tl:10px] hover:[--aug-border-bg:var(--color-verde)]"
             >
               Escríbeme
             </a>
@@ -81,11 +91,16 @@ export default function Hero() {
         </div>
 
         <motion.div variants={item} className="md:col-span-4">
-          <img
-            src="/yo.jpeg"
-            alt="Foto de perfil de Alfredo Galdames"
-            className="aspect-square w-40 rounded-xl object-cover ring-1 ring-linea md:w-full"
-          />
+          <div
+            data-augmented-ui="tr-clip bl-clip border"
+            className="w-40 md:w-full [--aug-bl:12px] [--aug-border-all:1px] [--aug-border-bg:var(--color-verde)] [--aug-tr:20px]"
+          >
+            <img
+              src="/yo.jpeg"
+              alt="Foto de perfil de Alfredo Galdames"
+              className="aspect-square w-full object-cover"
+            />
+          </div>
         </motion.div>
       </motion.div>
     </section>

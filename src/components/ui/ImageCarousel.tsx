@@ -19,17 +19,20 @@ export default function ImageCarousel({ media, className = "", onItemClick }: Im
 
   return (
     <div className={`relative ${className}`}>
-      <div className="relative">
+      <div
+        data-augmented-ui="tr-clip bl-clip border"
+        className="group relative [--aug-bl:14px] [--aug-border-all:1px] [--aug-border-bg:var(--color-verde)] [--aug-tr:24px]"
+      >
         {current.kind === "image" ? (
           <img
             src={current.src}
             alt={current.alt ?? `Imagen ${idx + 1}`}
-            className="aspect-video w-full cursor-zoom-in rounded-xl border border-linea object-cover"
+            className="aspect-video w-full cursor-zoom-in object-cover"
             onClick={() => onItemClick?.(idx)}
           />
         ) : (
           <div
-            className="relative w-full overflow-hidden rounded-xl border border-linea"
+            className="relative w-full overflow-hidden"
             onClick={() => onItemClick?.(idx)}
           >
             <div className="pt-[56.25%]" />
@@ -44,18 +47,23 @@ export default function ImageCarousel({ media, className = "", onItemClick }: Im
           </div>
         )}
 
+        <div
+          aria-hidden="true"
+          className="scanlines pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+        />
+
         {total > 1 && (
           <>
             <button
               onClick={prev}
-              className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-tinta/60 p-2 text-papel transition hover:bg-tinta/80 active:scale-[0.98]"
+              className="absolute left-3 top-1/2 -translate-y-1/2 rounded-sm bg-tinta/60 p-2 text-papel transition hover:bg-tinta/80 active:scale-[0.98]"
               aria-label="Anterior"
             >
               ‹
             </button>
             <button
               onClick={next}
-              className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-tinta/60 p-2 text-papel transition hover:bg-tinta/80 active:scale-[0.98]"
+              className="absolute right-3 top-1/2 -translate-y-1/2 rounded-sm bg-tinta/60 p-2 text-papel transition hover:bg-tinta/80 active:scale-[0.98]"
               aria-label="Siguiente"
             >
               ›

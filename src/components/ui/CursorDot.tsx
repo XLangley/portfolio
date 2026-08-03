@@ -23,7 +23,7 @@ export default function CursorDot() {
   return (
     <motion.div
       aria-hidden="true"
-      className="pointer-events-none fixed left-0 top-0 z-[120] hidden size-7 rounded-full border border-acento [@media(pointer:fine)]:block"
+      className="pointer-events-none fixed left-0 top-0 z-[120] hidden size-7 rounded-full border border-verde [@media(pointer:fine)]:block"
       style={{ x: sx, y: sy }}
     />
   )

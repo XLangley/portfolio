@@ -42,7 +42,8 @@ export default function ProjectsSection() {
                 {p.tecnologias.map((tec) => (
                   <li
                     key={tec.nombre}
-                    className="rounded-full border border-linea px-2.5 py-0.5 font-mono text-[11px] text-humo"
+                    data-augmented-ui="tl-clip br-clip border"
+                    className="brillo px-2.5 py-0.5 font-mono text-[11px] text-humo transition-colors hover:text-verde [--aug-border-all:1px] [--aug-border-bg:var(--color-linea)] [--aug-br:5px] [--aug-tl:5px] hover:[--aug-border-bg:var(--color-verde)]"
                   >
                     {tec.nombre}
                   </li>

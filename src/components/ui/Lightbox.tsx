@@ -42,7 +42,8 @@ export default function Lightbox({ media, index, onClose, onPrev, onNext }: Ligh
           e.stopPropagation()
           onClose()
         }}
-        className="absolute right-4 top-4 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-sm text-white transition hover:bg-white/20 active:scale-[0.98]"
+        data-augmented-ui="tl-clip br-clip"
+        className="absolute right-4 top-4 border border-white/20 bg-white/10 px-4 py-1.5 text-sm text-white transition hover:bg-white/20 active:scale-[0.98] [--aug-br:6px] [--aug-tl:6px]"
       >
         Cerrar
       </button>
@@ -52,14 +53,16 @@ export default function Lightbox({ media, index, onClose, onPrev, onNext }: Ligh
           <>
             <button
               onClick={onPrev}
-              className="absolute left-2 top-1/2 z-10 -translate-y-1/2 rounded-full bg-white/10 p-3 text-white transition hover:bg-white/20 active:scale-[0.98]"
+              data-augmented-ui="tl-clip br-clip"
+              className="absolute left-2 top-1/2 z-10 -translate-y-1/2 bg-white/10 p-3 text-white transition hover:bg-white/20 active:scale-[0.98] [--aug-br:6px] [--aug-tl:6px]"
               aria-label="Anterior"
             >
               ‹
             </button>
             <button
               onClick={onNext}
-              className="absolute right-2 top-1/2 z-10 -translate-y-1/2 rounded-full bg-white/10 p-3 text-white transition hover:bg-white/20 active:scale-[0.98]"
+              data-augmented-ui="tl-clip br-clip"
+              className="absolute right-2 top-1/2 z-10 -translate-y-1/2 bg-white/10 p-3 text-white transition hover:bg-white/20 active:scale-[0.98] [--aug-br:6px] [--aug-tl:6px]"
               aria-label="Siguiente"
             >
               ›

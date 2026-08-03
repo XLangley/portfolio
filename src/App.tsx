@@ -12,7 +12,7 @@ export default function App() {
     <main className="relative min-h-screen w-full overflow-x-clip bg-papel font-sans text-tinta antialiased">
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute -left-32 -top-24 h-96 w-96 rounded-full bg-acento/20 blur-3xl" />
-        <div className="absolute -right-24 top-16 h-80 w-80 rounded-full bg-rosa/15 blur-3xl" />
+        <div className="absolute -right-24 top-16 h-80 w-80 rounded-full bg-verde/15 blur-3xl" />
       </div>
       <CursorDot />
       <Navbar />
