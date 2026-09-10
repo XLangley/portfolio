@@ -4,12 +4,72 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Alfredo Galdames, ingeniero informático full-stack. APIs escalables e interfaces rápidas, de Oracle a React." />
-    <meta name="theme-color" content="#f4f2f7" media="(prefers-color-scheme: light)" />
+    <meta name="description" content="Alfredo Galdames, ingeniero informático full-stack en Santiago de Chile. Aplicaciones web y móviles con React, React Native, NestJS y PostgreSQL, y soluciones de IA con Python y LangGraph." />
+    <meta name="theme-color" content="#eeeaf4" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#0e0a14" media="(prefers-color-scheme: dark)" />
     <title>Alfredo Galdames — Ingeniero Informático Full-Stack</title>
+
+    <link rel="canonical" href="https://portfolio-agaldames.vercel.app/" />
+    <meta name="author" content="Alfredo Galdames" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph: lo que LinkedIn, WhatsApp, Slack, etc. muestran al compartir el link -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_CL" />
+    <meta property="og:url" content="https://portfolio-agaldames.vercel.app/" />
+    <meta property="og:site_name" content="Alfredo Galdames" />
+    <meta property="og:title" content="Alfredo Galdames — Ingeniero Informático Full-Stack" />
+    <meta property="og:description" content="Aplicaciones web y móviles con React, React Native, NestJS y PostgreSQL, y soluciones de IA con Python y LangGraph. Santiago de Chile." />
+    <meta property="og:image" content="https://portfolio-agaldames.vercel.app/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Alfredo Galdames, ingeniero informático full-stack" />
+
+    <!-- Twitter / X usa sus propias etiquetas, pero cae a Open Graph si faltan -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Alfredo Galdames — Ingeniero Informático Full-Stack" />
+    <meta name="twitter:description" content="Aplicaciones web y móviles con React, React Native, NestJS y PostgreSQL, y soluciones de IA con Python y LangGraph." />
+    <meta name="twitter:image" content="https://portfolio-agaldames.vercel.app/og.png" />
+
+    <!-- Fuente del título principal: precargarla evita el salto de tipografía -->
+    <link rel="preload" href="/fonts/CabinetGrotesk-Variable.woff2" as="font" type="font/woff2" crossorigin />
+
+    <!-- Datos estructurados para Google (tipo Person) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Alfredo Galdames",
+        "url": "https://portfolio-agaldames.vercel.app/",
+        "image": "https://portfolio-agaldames.vercel.app/og.png",
+        "email": "mailto:agaldames.dev@gmail.com",
+        "jobTitle": "Ingeniero Informático Full-Stack",
+        "address": { "@type": "PostalAddress", "addressLocality": "Santiago", "addressCountry": "CL" },
+        "worksFor": [
+          { "@type": "Organization", "name": "ColectyRed", "url": "https://www.linkedin.com/company/colectyred/" },
+          { "@type": "Organization", "name": "Cramer", "url": "https://www.linkedin.com/company/cramer-s-a-c-i-/" }
+        ],
+        "sameAs": [
+          "https://github.com/XLangley",
+          "https://www.linkedin.com/in/alfredogaldames/"
+        ],
+        "knowsAbout": ["TypeScript", "React", "React Native", "NestJS", "Node.js", "PostgreSQL", "Oracle", "Python", "FastAPI", "LangGraph", "Docker", "AWS"]
+      }
+    </script>
     <script>
-      document.documentElement.classList.add("dark")
+      // Aplica el tema antes del primer render para evitar el flash.
+      // Preferencia guardada > preferencia del sistema > oscuro.
+      ;(function () {
+        var guardado = null
+        try {
+          guardado = localStorage.getItem("tema")
+        } catch (e) {}
+        var oscuro =
+          guardado === "dark" ||
+          (guardado !== "light" && window.matchMedia("(prefers-color-scheme: dark)").matches)
+        document.documentElement.classList.toggle("dark", oscuro)
+        document.documentElement.style.colorScheme = oscuro ? "dark" : "light"
+      })()
     </script>
   </head>
   <body>
