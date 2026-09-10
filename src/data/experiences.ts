@@ -22,6 +22,20 @@ export interface Experience {
         ]
     },
     {
+      empresa: "ColectyRed",
+      link:"https://www.linkedin.com/company/colectyred/",
+      puesto: "Full Stack Engineer",
+      periodo: "2026 — Presente",
+      tecnologias: ["React", "React Native", "NestJS", "TypeScript", "PostgreSQL", "Mercado Pago", "GitHub Actions", "AWS EC2", "Claude Code / MCP"],
+      descripcion: [
+        "Rediseño y migración de la aplicación móvil de pasajeros, modernizando completamente la experiencia UI/UX y mejorando la usabilidad de la aplicación.",
+        "Integración de Mercado Pago Checkout API para habilitar y gestionar el flujo de pagos dentro de la aplicación.",
+        "Implementación de pipeline de CI/CD con GitHub Actions, automatizando el proceso de build y despliegue hacia infraestructura AWS EC2.",
+        "Desarrollo y evolución de soluciones Full Stack y Mobile utilizando tecnologías como React, React Native, NestJS, TypeScript y PostgreSQL.",
+        "Incorporación de herramientas de IA para desarrollo de software, utilizando flujos de trabajo con Claude Code, MCP y AI-assisted development."
+      ]
+    },
+    {
       empresa: "Insico S.A",
       link:"https://www.linkedin.com/company/insico-s.a./posts/?feedView=all",
       puesto: "Desarrollador Full-Stack",

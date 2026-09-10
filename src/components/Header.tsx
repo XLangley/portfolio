@@ -65,8 +65,8 @@ export default function Hero() {
           </motion.p>
 
           <motion.p variants={item} className="mt-5 max-w-[58ch] text-lg leading-relaxed text-humo">
-            Desde Santiago de Chile construyo aplicaciones web escalables con{" "}
-            <span className="font-medium text-acento">TypeScript</span> (React, NestJS, PostgreSQL/Oracle)
+            Desde Santiago de Chile construyo aplicaciones web y móviles escalables con{" "}
+            <span className="font-medium text-acento">TypeScript</span> (React, React Native, NestJS, PostgreSQL/Oracle)
             y soluciones de IA con <span className="font-medium text-acento">Python</span> y{" "}
             <span className="font-medium text-acento">LangGraph</span>: agentes sobre LLMs y
             automatización inteligente.
