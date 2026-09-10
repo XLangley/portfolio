@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { Play } from "lucide-react"
 import type { MediaItem } from "../../data/projects"
 
 interface ImageCarouselProps {
@@ -27,24 +28,39 @@ export default function ImageCarousel({ media, className = "", onItemClick }: Im
           <img
             src={current.src}
             alt={current.alt ?? `Imagen ${idx + 1}`}
+            loading="lazy"
+            decoding="async"
             className="aspect-video w-full cursor-zoom-in object-cover"
             onClick={() => onItemClick?.(idx)}
           />
         ) : (
-          <div
-            className="relative w-full overflow-hidden"
+          /* Facade: miniatura estática. El iframe de YouTube (y su ~0,5 MB de JS)
+             recién se carga cuando el usuario abre el video en el lightbox. */
+          <button
+            type="button"
             onClick={() => onItemClick?.(idx)}
+            aria-label={`Reproducir ${current.title ?? "video"}`}
+            className="relative block aspect-video w-full cursor-pointer overflow-hidden"
           >
-            <div className="pt-[56.25%]" />
-            <iframe
-              className="absolute inset-0 h-full w-full"
-              src={`https://www.youtube-nocookie.com/embed/${current.id}?rel=0`}
-              title={current.title ?? "YouTube video"}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              allowFullScreen
+            <img
+              src={current.thumbnail ?? `https://i.ytimg.com/vi/${current.id}/hqdefault.jpg`}
+              alt=""
+              loading="lazy"
+              decoding="async"
+              className="h-full w-full object-cover"
             />
-          </div>
+            <span
+              aria-hidden="true"
+              className="absolute inset-0 flex items-center justify-center bg-black/25 transition-colors group-hover:bg-black/35"
+            >
+              <span
+                data-augmented-ui="tl-clip br-clip"
+                className="flex h-16 w-16 items-center justify-center bg-verde text-papel transition-transform group-hover:scale-105 [--aug-br:10px] [--aug-tl:10px]"
+              >
+                <Play className="ml-0.5 h-7 w-7 fill-current" />
+              </span>
+            </span>
+          </button>
         )}
 
         <div
