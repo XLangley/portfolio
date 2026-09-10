@@ -13,12 +13,13 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --color-papel: #f4f2f7;
+  /* Tema claro: papel lavanda (no blanco), líneas visibles, verde con contraste AA sobre papel. */
+  --color-papel: #eeeaf4;
   --color-tinta: #16121c;
-  --color-humo: #5c566b;
+  --color-humo: #574f66;
   --color-acento: #6d28d9;
   --color-verde: #4d7c0f;
-  --color-linea: #dfdae6;
+  --color-linea: #c9c2d6;
 
   --font-display: "Cabinet Grotesk", "Inter Tight", system-ui, sans-serif;
   --font-sans: "Inter Tight", system-ui, sans-serif;

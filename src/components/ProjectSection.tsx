@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { ArrowUpRight, Github } from "lucide-react"
 import SectionTitle from "./ui/SectionTitle"
 import Reveal from "./ui/Reveal"
 import { projects, type MediaItem } from "../data/projects"
@@ -18,7 +19,7 @@ export default function ProjectsSection() {
 
   return (
     <section id="proyectos" className="mt-20 scroll-mt-24 md:mt-28">
-      <SectionTitle title="Proyectos" />
+      <SectionTitle title="Proyectos" numero="02" />
       <div className="grid gap-10 md:grid-cols-2 md:gap-x-8 md:gap-y-14">
         {projects.map((p) => (
           <Reveal key={p.nombre}>
@@ -50,15 +51,31 @@ export default function ProjectsSection() {
                 ))}
               </ul>
 
-              {p.link && p.link !== "#" && (
-                <a
-                  href={p.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-5 inline-block text-sm font-medium text-acento underline underline-offset-4 transition-opacity hover:opacity-75"
-                >
-                  Ver proyecto ↗
-                </a>
+              {(p.link || p.repo) && (
+                <div className="mt-5 flex flex-wrap items-center gap-5">
+                  {p.link && (
+                    <a
+                      href={p.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-sm font-medium text-acento underline underline-offset-4 transition-opacity hover:opacity-75"
+                    >
+                      Ver proyecto
+                      <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                    </a>
+                  )}
+                  {p.repo && (
+                    <a
+                      href={p.repo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-widest text-humo transition-colors hover:text-acento"
+                    >
+                      <Github className="h-4 w-4" aria-hidden="true" />
+                      Ver código
+                    </a>
+                  )}
+                </div>
               )}
             </article>
           </Reveal>
