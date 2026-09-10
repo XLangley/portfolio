@@ -1,7 +1,10 @@
+import { Fragment } from "react"
 import { motion, useReducedMotion, type Variants } from "motion/react"
 import { useTypewriter } from "../hooks/useTypewriter"
+import { experiences, esActual } from "../data/experiences"
 
 const roles = ["full-stack.", "backend.", "frontend."]
+const actuales = experiences.filter(esActual)
 
 const contenedor: Variants = {
   oculto: {},
@@ -41,6 +44,24 @@ export default function Hero() {
               </span>
               Trabajando
             </span>
+            {actuales.length > 0 && (
+              <p className="mt-3 font-mono text-xs text-humo">
+                Actualmente en{" "}
+                {actuales.map((exp, i) => (
+                  <Fragment key={exp.empresa}>
+                    {i > 0 && (i === actuales.length - 1 ? " y " : ", ")}
+                    <a
+                      href={exp.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-tinta underline decoration-linea underline-offset-4 transition-colors hover:text-acento hover:decoration-acento"
+                    >
+                      {exp.empresa}
+                    </a>
+                  </Fragment>
+                ))}
+              </p>
+            )}
           </motion.div>
 
           <motion.h1
@@ -96,7 +117,10 @@ export default function Hero() {
             className="w-40 md:w-full [--aug-bl:12px] [--aug-border-all:1px] [--aug-border-bg:var(--color-verde)] [--aug-tr:20px]"
           >
             <img
-              src="/yo.jpeg"
+              src="/yo.webp"
+              width="800"
+              height="800"
+              fetchPriority="high"
               alt="Foto de perfil de Alfredo Galdames"
               className="aspect-square w-full object-cover"
             />

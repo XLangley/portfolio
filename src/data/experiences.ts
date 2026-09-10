@@ -7,6 +7,9 @@ export interface Experience {
     descripcion: string[]
   }
   
+  /** Un trabajo es "actual" si su periodo sigue abierto. */
+  export const esActual = (exp: Experience) => /presente|actualidad/i.test(exp.periodo)
+
   export const experiences: Experience[] = [
     {
         empresa: "Cramer",
