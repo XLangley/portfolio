@@ -102,7 +102,7 @@ export default function Hero() {
               Ver proyectos
             </a>
             <a
-              href="mailto:agaldames.dev@gmail.com"
+              href="#contacto"
               data-augmented-ui="tl-clip br-clip border"
               className="brillo px-6 py-3 text-sm font-medium transition active:scale-[0.98] [--aug-border-all:1px] [--aug-border-bg:var(--color-linea)] [--aug-br:10px] [--aug-tl:10px] hover:[--aug-border-bg:var(--color-verde)]"
             >
