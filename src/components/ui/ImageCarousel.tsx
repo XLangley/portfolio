@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Play } from "lucide-react"
+import { ChevronLeft, ChevronRight, Play } from "lucide-react"
 import type { MediaItem } from "../../data/projects"
 
 interface ImageCarouselProps {
@@ -72,17 +72,19 @@ export default function ImageCarousel({ media, className = "", onItemClick }: Im
           <>
             <button
               onClick={prev}
-              className="absolute left-3 top-1/2 -translate-y-1/2 rounded-sm bg-tinta/60 p-2 text-papel transition hover:bg-tinta/80 active:scale-[0.98]"
+              data-augmented-ui="tl-clip br-clip"
+              className="absolute left-3 top-1/2 -translate-y-1/2 flex h-9 w-9 items-center justify-center bg-verde text-papel shadow-md shadow-black/20 transition hover:brightness-110 active:scale-[0.98] [--aug-br:7px] [--aug-tl:7px]"
               aria-label="Anterior"
             >
-              ‹
+              <ChevronLeft className="h-4 w-4" aria-hidden="true" />
             </button>
             <button
               onClick={next}
-              className="absolute right-3 top-1/2 -translate-y-1/2 rounded-sm bg-tinta/60 p-2 text-papel transition hover:bg-tinta/80 active:scale-[0.98]"
+              data-augmented-ui="tl-clip br-clip"
+              className="absolute right-3 top-1/2 -translate-y-1/2 flex h-9 w-9 items-center justify-center bg-verde text-papel shadow-md shadow-black/20 transition hover:brightness-110 active:scale-[0.98] [--aug-br:7px] [--aug-tl:7px]"
               aria-label="Siguiente"
             >
-              ›
+              <ChevronRight className="h-4 w-4" aria-hidden="true" />
             </button>
           </>
         )}

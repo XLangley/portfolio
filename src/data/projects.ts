@@ -16,6 +16,28 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    nombre: "ColectyRed",
+    descripcion:
+      "Plataforma de transporte colectivo: aplicación móvil de pasajeros rediseñada, con pagos integrados vía Mercado Pago y despliegue automatizado en AWS.",
+    anio: "2026",
+    link: "https://colectyred.cl",
+    tecnologias: [
+      { nombre: "React" },
+      { nombre: "React Native" },
+      { nombre: "NestJS" },
+      { nombre: "TypeScript" },
+      { nombre: "PostgreSQL" },
+      { nombre: "Mercado Pago" },
+      { nombre: "GitHub Actions" },
+      { nombre: "AWS EC2" },
+      { nombre: "Claude Code / MCP" },
+    ],
+    media: [
+      { kind: "image", src: "/colectyred/1.webp", alt: "ColectyRed, vista 1" },
+      { kind: "image", src: "/colectyred/2.webp", alt: "ColectyRed, vista 2" },
+    ],
+  },
+  {
     nombre: "Señalando un futuro",
     descripcion: "Aplicación web para aprendizaje de lengua de señas chilena (LSCh).",
     anio: "2024",

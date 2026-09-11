@@ -1,4 +1,5 @@
 import { useEffect } from "react"
+import { ChevronLeft, ChevronRight, X } from "lucide-react"
 import type { MediaItem } from "../../data/projects"
 
 interface LightboxProps {
@@ -43,8 +44,10 @@ export default function Lightbox({ media, index, onClose, onPrev, onNext }: Ligh
           onClose()
         }}
         data-augmented-ui="tl-clip br-clip"
-        className="absolute right-4 top-4 border border-white/20 bg-white/10 px-4 py-1.5 text-sm text-white transition hover:bg-white/20 active:scale-[0.98] [--aug-br:6px] [--aug-tl:6px]"
+        className="absolute right-4 top-4 inline-flex items-center gap-2 bg-verde px-4 py-2 font-mono text-xs uppercase tracking-widest text-papel shadow-lg shadow-black/30 transition hover:brightness-110 active:scale-[0.98] [--aug-br:8px] [--aug-tl:8px]"
+        aria-label="Cerrar"
       >
+        <X className="h-4 w-4" aria-hidden="true" />
         Cerrar
       </button>
 
@@ -54,18 +57,18 @@ export default function Lightbox({ media, index, onClose, onPrev, onNext }: Ligh
             <button
               onClick={onPrev}
               data-augmented-ui="tl-clip br-clip"
-              className="absolute left-2 top-1/2 z-10 -translate-y-1/2 bg-white/10 p-3 text-white transition hover:bg-white/20 active:scale-[0.98] [--aug-br:6px] [--aug-tl:6px]"
+              className="absolute left-2 top-1/2 z-10 -translate-y-1/2 flex h-10 w-10 items-center justify-center bg-verde text-papel shadow-lg shadow-black/30 transition hover:brightness-110 active:scale-[0.98] [--aug-br:8px] [--aug-tl:8px]"
               aria-label="Anterior"
             >
-              ‹
+              <ChevronLeft className="h-5 w-5" aria-hidden="true" />
             </button>
             <button
               onClick={onNext}
               data-augmented-ui="tl-clip br-clip"
-              className="absolute right-2 top-1/2 z-10 -translate-y-1/2 bg-white/10 p-3 text-white transition hover:bg-white/20 active:scale-[0.98] [--aug-br:6px] [--aug-tl:6px]"
+              className="absolute right-2 top-1/2 z-10 -translate-y-1/2 flex h-10 w-10 items-center justify-center bg-verde text-papel shadow-lg shadow-black/30 transition hover:brightness-110 active:scale-[0.98] [--aug-br:8px] [--aug-tl:8px]"
               aria-label="Siguiente"
             >
-              ›
+              <ChevronRight className="h-5 w-5" aria-hidden="true" />
             </button>
           </>
         )}
@@ -95,7 +98,7 @@ export default function Lightbox({ media, index, onClose, onPrev, onNext }: Ligh
             {media.map((_m, i) => (
               <span
                 key={i}
-                className={`h-2 w-2 rounded-full ${i === index ? "bg-white" : "bg-white/40"}`}
+                className={`h-1.5 w-4 rounded-full transition ${i === index ? "bg-verde" : "bg-white/30"}`}
               />
             ))}
           </div>

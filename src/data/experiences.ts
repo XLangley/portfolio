@@ -16,7 +16,7 @@ export interface Experience {
         link:"https://www.linkedin.com/company/cramer-s-a-c-i-/posts/?feedView=all",
         puesto: "Desarrollador Full-Stack",
         periodo: "2025 — Presente",
-        tecnologias: ["React", "Vite", "Node.js (Express, NestJS)", "Python (FastAPI, LangGraph)", "OpenAI", "PostgreSQL", "Oracle", "Docker"],
+        tecnologias: ["React", "Vite", "Node.js (Express, NestJS)", "Python (FastAPI, LangGraph)", "OpenAI", "PostgreSQL", "Oracle", "Docker", "CI/CD", "Prometheus", "Grafana", "Loki"],
         descripcion: [
           "Migración de Salesforce a un CRM propio multi-tenant (SalesCramer) con NestJS + Oracle PL/SQL y React, integrado con un agente de IA conversacional (Python, FastAPI, LangGraph + OpenAI) que navega el sistema y autocompleta formularios desde lenguaje natural.",
           "Diseño e implementación de APIs escalables con Node.js (Express, NestJS).",

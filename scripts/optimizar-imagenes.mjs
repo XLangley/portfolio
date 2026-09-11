@@ -6,6 +6,8 @@ const tareas = [
   { entrada: "imagenes-originales/inicio.png", salida: "public/suf/inicio.webp", ancho: 1600 },
   { entrada: "imagenes-originales/video.jpg", salida: "public/suf/video.webp", ancho: 1280 },
   { entrada: "imagenes-originales/yo.jpeg", salida: "public/yo.webp", ancho: 800 },
+  { entrada: "imagenes-originales/colectyred-1.png", salida: "public/colectyred/1.webp", ancho: 1600 },
+  { entrada: "imagenes-originales/colectyred-2.png", salida: "public/colectyred/2.webp", ancho: 1600 },
 ]
 
 for (const t of tareas) {
