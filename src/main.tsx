@@ -7,10 +7,12 @@ import "@fontsource/jetbrains-mono/500.css"
 import "./index.css"
 import App from './App.tsx'
 import { SpeedInsights } from '@vercel/speed-insights/react'
+import { Analytics } from "@vercel/analytics/next"
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <App />
     <SpeedInsights />
+    <Analytics />
   </StrictMode>,
 )
